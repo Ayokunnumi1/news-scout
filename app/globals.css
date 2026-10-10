@@ -1,0 +1,117 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * NewsScout theme — a light, restrained enterprise palette.
+ * shadcn/ui semantic tokens + domain tokens for severity and classification.
+ * Classification hues were validated for colour-vision deficiency (adjacent
+ * CVD ΔE ≥ 15) and are always paired with a text label.
+ */
+:root {
+  color-scheme: light;
+  --radius: 0.5rem;
+
+  --background: #f6f7f9;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --popover: #ffffff;
+  --popover-foreground: #0f172a;
+  --primary: #0b2545;
+  --primary-foreground: #ffffff;
+  --secondary: #eef1f5;
+  --secondary-foreground: #0f172a;
+  --muted: #eef1f5;
+  --muted-foreground: #5b6474;
+  --accent: #e8edf4;
+  --accent-foreground: #0b2545;
+  --destructive: #c42b2b;
+  --destructive-foreground: #ffffff;
+  --border: #dde2ea;
+  --input: #cfd6e0;
+  --ring: #2a78d6;
+
+  --sidebar: #0b2545;
+  --sidebar-foreground: #c7d2e3;
+  --sidebar-active: #13345e;
+
+  /* Chart surface + ink */
+  --chart-grid: #e6e9ee;
+  --chart-axis: #5b6474;
+
+  /* Classification (categorical, validated order) */
+  --cls-false: #e34948;
+  --cls-misleading: #eda100;
+  --cls-unverified: #4a3aa7;
+  --cls-true: #008300;
+
+  /* Risk status palette (reserved; always shown with icon + label) */
+  --risk-low: #0ca30c;
+  --risk-medium: #fab219;
+  --risk-high: #ec835a;
+  --risk-critical: #d03b3b;
+
+  /* Sequential single hue */
+  --seq-blue: #2a78d6;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-active: var(--sidebar-active);
+  --color-cls-false: var(--cls-false);
+  --color-cls-misleading: var(--cls-misleading);
+  --color-cls-unverified: var(--cls-unverified);
+  --color-cls-true: var(--cls-true);
+  --color-risk-low: var(--risk-low);
+  --color-risk-medium: var(--risk-medium);
+  --color-risk-high: var(--risk-high);
+  --color-risk-critical: var(--risk-critical);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings:
+      "tnum" 1,
+      "cv11" 1;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}

@@ -1,0 +1,7 @@
+.next
+node_modules
+supabase/.temp
+supabase/.branches
+.playwright-mcp
+package-lock.json
+next-env.d.ts
